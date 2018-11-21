@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "space-between",
+      "margin": 20,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexBasis": "80%",
+        "marginBottom": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "rgba(0, 0, 0, 0.875)",
+          "fontSize": 24,
+          "fontWeight": "bold",
+          "marginBottom": 5,
+        }
+      }
+    />
+    <Text />
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    />
+  </View>
+</View>
+`;

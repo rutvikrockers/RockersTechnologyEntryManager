@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "382253257607",
+    "firebase_url": "https://the-crowd-aa056.firebaseio.com",
+    "project_id": "the-crowd-aa056",
+    "storage_bucket": "the-crowd-aa056.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382253257607:android:e7b8b8910b115c64",
+        "android_client_info": {
+          "package_name": "com.ideas.thecrowd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382253257607-17mqhvd3gebvok68h2qnb6ves0s86p2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyINTvl4CXN-C8bzc-yDht_PS88qEdKa0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
