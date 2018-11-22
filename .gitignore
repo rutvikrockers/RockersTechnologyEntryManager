@@ -36,12 +36,6 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
-# jest
-#
-.jest/
-src/coverage/
-src/coverage/lcov-report/
-
 # BUCK
 buck-out/
 \.buckd/

@@ -1,14 +1,9 @@
-
-import camelize from 'camelcase-keys';
-import { UPDATE_FEED } from '../actions/actionTypes';
-
-
 export default function (state = {
   allVideos: [],
 }, {type, payload}) {
   switch (type) {
 
-    case UPDATE_FEED: {
+    case 'UPDATE_FEED': {
       return {
         ...state,
         allVideos: payload.allVideos,

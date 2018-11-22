@@ -49,7 +49,6 @@ class Card extends Component {
   }
 
   doVideoAction(action, id, value) {
-    this.showFeedback(action);
     this.props.dispatch(doVideoAction(action, id, value, this.props.user.token));
   }
   render() {

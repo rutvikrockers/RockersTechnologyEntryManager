@@ -1,20 +1,19 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'TicketingSoft' do
+target 'theCrowd' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
 
   # Pods for theCrowd
   pod 'Firebase/Core'
-  pod 'Firebase/Firestore'
 
-  target 'TicketingSoft-tvOSTests' do
+  target 'theCrowd-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'TicketingSoftTests' do
+  target 'theCrowdTests' do
     inherit! :search_paths
     # Pods for testing
   end

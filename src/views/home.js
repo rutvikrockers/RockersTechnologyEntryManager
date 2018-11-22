@@ -1,64 +1,49 @@
 import React, {Component} from 'react';
-import {View, TouchableOpacity, Platform, StyleSheet, Text, ScrollView, AsyncStorage,FlatList,Image} from 'react-native';
+import {View, TouchableOpacity, Platform, StyleSheet, Text, ScrollView, AsyncStorage} from 'react-native';
 import {connect} from 'react-redux';
-import {Redirect, Link} from 'react-router-native';
+import {fetchFeed} from '../actions/feed';
+import styles from '../styles/main.js';
+import Card from '../components/shared/card'
 import Dimensions from 'Dimensions';
-import {fetchEvents} from '../actions/event';
+import {playVideo, isVideoPlaying, doVideoAction} from '../actions/video';
 const {width, height} = Dimensions.get('window');
-import stylesMain from '../styles/main';
-import styles from '../styles/event';
+
 type Props = {};
 class App extends Component<Props> {
-
   constructor(props) {
     super(props);
-    this.id = ''
-    this.eventId = ''
-    this.state = {
-      isHidden: false,
-    };
+    this.scrollEnd = this.scrollEnd.bind(this);
+    this.changeVideo = this.changeVideo.bind(this);
   }
-  onvanuenameclick() {
-    
-  //  this.props.dispatch(onFollow(this.company_id))
-    return ( <Redirect to="../components/user/eventdetail.js" /> )
+  async componentWillMount() {
+    this.props.dispatch(fetchFeed(this.props.user.token))
+    AsyncStorage.setItem('token',this.props.user.token);
   }
-   componentWillMount() {
-   this.props.dispatch(fetchEvents(this.props.user.msg));
+  scrollEnd(ev,b,c) {
+    let position = (ev.nativeEvent.contentOffset.y/height);
+    this.changeVideo(position) 
   }
-
-
+  changeVideo(position) {
+    this.props.dispatch(playVideo(position)) 
+  }
   render() {
     return (
-      <View style={styles.container} >
-      <Text style={styles.h2text}>
-     My Events
-      </Text>
-      <FlatList
-data={this.props.event}
-showsVerticalScrollIndicator={false}
-renderItem={({item}) =>
+      <ScrollView style={{paddingTop: 0}}
+        decelerationRate={0}
+        snapToInterval={height} //your element width
+        snapToAlignment={"start"}
+        animate={true}
+        onScroll={this.scrollEnd}
+        scrollEventThrottle={height}
+      >
+        {this.props.feed.map((item, index) => {
+          let str = `${this.props.path}/${item.url}`;
       
-<View style={stylesMain.horizontalGroup}>
-
-<View style={stylesMain.verticalGroup}>
-<Text style={styles.name}>{item.event_title}</Text>
-<TouchableOpacity
-onPress={() => {this.onvanuenameclick()}}>
-                  <Text style={styles.overView}>{"On "+ item.event_start_date_time + " at " +item.vanue_name.replace(/<(.|\n)*?>/g, '')}</Text>
-                    </TouchableOpacity>
-
-</View>
- 
-{/* <View>
-<Image source={{uri: this.props.path + '/' + item.thumb_img}} style={{width: 70, height: 70}} />
-</View> */}
-</View>
-}
-keyExtractor={item => item.event_title}
-
-/>
-  </View>
+          return(
+            <Card item={item} key={item+index} index={index} uri= {`${this.props.path}/${item.url}`}></Card>
+          )
+        })}
+      </ScrollView>
     );
   }
 }
@@ -66,7 +51,10 @@ keyExtractor={item => item.event_title}
 export const mapStateToProps = (state) => {
   return {
     user: state.user,
-    event: state.event.all_events,
+    feed: state.feed.allVideos,
+    path: state.feed.videoPath,
+    currentVideo: state.video.nowPlaying,
+    isPlaying: state.video.isPlaying
   }
 }
 

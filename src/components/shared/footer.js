@@ -15,10 +15,10 @@ class Footer extends Component {
   render() {
     return (
       <View style={styles.footer}>
-        {/* <Link to="/menu"><Icon size={30} name="explore" color="white" style={styles.footerBtn} /></Link>
+        <Link to="/menu"><Icon size={30} name="explore" color="white" style={styles.footerBtn} /></Link>
         <Link to="/"><Icon size={30} name="menu" color="white" style={styles.footerBtn} /></Link>
         <Link to="/menu"><Icon size={30} name="mail-outline" color="white" style={styles.footerBtn} /></Link>
-        <Link to="/profile"><Icon size={30} name="account-circle" color="white" style={styles.footerBtn} /></Link> */}
+        <Link to="/profile"><Icon size={30} name="account-circle" color="white" style={styles.footerBtn} /></Link>
       </View>
     )
   }

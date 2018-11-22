@@ -1,14 +1,12 @@
 import Config from 'react-native-config';
-import FormData from 'form-data';
 
-export function doFetch(method, path, data, cb){
+export function doFetch(method, path, data, token, cb){
   let payload = {
     method: method,
-     headers: {
-    //   'fscrwsf-token': 'WQazAUbwfRYu2//yY322bg==',
-    //   'www-token': token,
-       'content-type': 'multipart/form-data',
-     }
+    headers: {
+      'fscrwsf-token': 'WQazAUbwfRYu2//yY322bg==',
+      'www-token': token,
+    }
   }
   if(method != 'GET'){
     var form_data = new FormData();
@@ -19,7 +17,7 @@ export function doFetch(method, path, data, cb){
     payload.body = form_data;
   }
 
-  return fetch("http://mydesichef.com/ticketingsoft_development"+path, payload)
+  return fetch("http://rockerstech.com/thecrowd/api"+path, payload)
     .then(
       (response) => response.json()
     )

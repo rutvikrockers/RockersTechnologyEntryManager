@@ -28,12 +28,7 @@ class Signup extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <Input
-        value={this.state.email}
-        placeholder="email@example.com"
-        onChange={(email) => this.setState({email})}
-        secure={false}
-      />
+      <Input value={this.state.email} placeholder="email@example.com" onChange={(email) => this.setState({email})} secure={false}/>
       <Input
         placeholder="Phone Number"
         onChange={(phone) => this.setState({phone})}

@@ -11,6 +11,17 @@ import { PersistGate } from 'redux-persist/lib/integration/react'
 import storage from 'redux-persist/lib/storage'
 import { login } from './src/actions'
 import LoadingView from './src/components/shared/loading';
+import { Immersive } from 'react-native-immersive'
+
+Immersive.on()
+
+const restoreImmersive = () => {
+    __DEV__ && console.warn('Immersive State Changed!')
+    Immersive.on()
+}
+
+Immersive.addImmersiveListener(restoreImmersive)
+Immersive.removeImmersiveListener(restoreImmersive)
 
 const config = {
   key: 'theCrowd',

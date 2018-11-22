@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,AsyncStorage,
+  TouchableOpacity,
   View
 } from 'react-native';
 import {Redirect, Link} from 'react-router-native';
@@ -17,16 +17,16 @@ class Login extends Component {
     super(props);
     this.state = {email: '', password: ''}
   }
-  
-   login() {
-    this.props.dispatch(authenticate(this.state.email, this.state.password)); 
+  componentWillMount() {
+    this.props.dispatch(getGuestToken()); 
+  }
+  login() {
+    this.props.dispatch(authenticate(this.state.email, this.state.password, this.props.user.guestToken)); 
   }
   render() {
-   
     if(this.props.user.loggedIn){
       return ( <Redirect to="/home" /> )
     }
-  
     return (
       <View style={styles.container}>
         <View style={styles.inputWrapper}>
@@ -47,15 +47,18 @@ class Login extends Component {
             onChangeText={(password) => this.setState({password})}
             value={this.state.password}
             underlineColorAndroid='rgba(0,0,0,0)'
-            secureTextEntry={true}/>
+            secureTextEntry={true}
+          />
         </View>
         <View style={{marginTop: 20}} />
         <Button
           style={styles.btnContainer}
           onPress={() => {this.login()}}
-          value="LOGIN"
+          value="GO"
         />
-       
+        <Link to="/signup">
+          <Text>Register</Text>
+        </Link>
       </View>
     );
   }

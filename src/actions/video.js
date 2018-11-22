@@ -18,6 +18,13 @@ export function isVideoPlaying(t) {
   }
 }
 
+export function videoAction(id){
+  return {
+    type: `${action.toUpperCase()}_VIDEO`,
+    payload: t
+  }
+}
+
 function error(e) {
   return {
     type: ERROR,

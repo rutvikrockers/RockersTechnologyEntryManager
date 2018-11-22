@@ -1,27 +1,19 @@
-import {
-  LOGIN,
-  LOGOUT,
-  GUEST_TOKEN
-} from '../actions/actionTypes';
-
 export default function (state = {
   loggedIn: false,
   email: null,
   _id: null,
-  token: null,
-  msg:null
+  token: null
 }, {type, payload}) {
   switch (type) {
-    case LOGIN: {
+    case 'LOGIN': {
       return {
         ...state,
         ...payload,
-        msg: payload.msg,
         loggedIn: true
       };
     }
 
-    case LOGOUT: {
+    case 'LOGOUT': {
       return {
         ...state,
         email: null,
@@ -31,7 +23,7 @@ export default function (state = {
       }
     }
 
-    case GUEST_TOKEN: {
+    case 'GUEST_TOKEN': {
       return {
         ...state,
         guestToken: payload

@@ -41,7 +41,8 @@ class Menu extends Component {
             
           <Text style={styles.menuHeader}>{this.props.user.email}</Text>
           <Link to="/profile"><Text style={styles.menuItem}>Profile</Text></Link>
-         
+          <Link to="/followers"><Text style={styles.menuItem}>Followers</Text></Link>
+          <Link to="/filters"><Text style={styles.menuItem}>Filters</Text></Link>
           <Text
             style={styles.menuItem}
             onPress={() => {this.logout()}}
